@@ -1,0 +1,124 @@
+body {
+  background-color: #f5f5f5;
+  margin-top: 10px; 
+ }
+
+
+.obrigatorio{
+    border-radius: 5px;
+    padding: 10px;
+    width: 300px;
+    margin: 10px;
+    border-color: rgb(175, 175, 175);
+    border-style: solid;
+    border-width: 1px;
+    font-family: Arial, Helvetica, sans-serif;
+    outline-color:  rgb(121, 121, 121);
+}
+
+span {
+    border-radius: 5px;
+    margin: 10px;
+    padding-bottom: 0px;
+}
+
+header {
+  background-color: black;
+}
+
+#s1 {
+    background-color: white;
+    border-radius: 10px;
+    padding: 80px;
+    width: 800px;
+    font-family: Arial, Helvetica, sans-serif;
+    margin: auto;
+    border-color: rgb(175, 175, 175);
+    border-style: solid;
+    border-width: 1px;
+}
+
+.titulo{
+  font-weight: bold;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.salvar{
+    padding: 10px;
+    margin: 10px;
+    width: 320px;
+    font-family: Arial, Helvetica, sans-serif;
+    border-radius: 5px;
+    background-color: #f5f5f5;
+    font-size: inherit;
+    font-weight: bold;
+    border-color: rgb(121, 121, 121);
+    border-style: solid;
+    border-width: 2px;
+}
+
+.mensg{
+  font-size: 10pt;
+  color: red;
+  margin-left: 10px;
+}
+
+footer{
+    font-family: Arial, Helvetica, sans-serif;
+    text-align: center;
+    font-size: 8pt;
+}
+
+ 
+ .tabs {
+   position: relative;   
+   min-height: 530px; /* This part sucks */
+   width: 800px;
+   height: 850px;
+   margin: 35px 0 25px;
+   background: white;
+   align-self: center;
+}
+ .tab {
+   float: left;
+    
+ }
+ .tab label {
+   background: #f5f5f5; 
+   padding: 10px; 
+   border: 1px solid #ccc; 
+   position: relative;
+   left: 1px; 
+   top: -29px;
+}
+
+ .tab [type=radio] {
+   display: none;   
+ }
+
+ .content {
+   position: absolute;
+   top: -1px;
+   left: 0;
+   background: white;
+   right: 0;
+   bottom: 0;
+   padding: 20px;
+   border: 1px solid #ccc; 
+   opacity: 0;
+ }
+ 
+ [type=radio]:checked ~ label {
+   background: white;
+   border-bottom: 1px solid white;
+   z-index: 2;
+ }
+ [type=radio]:checked ~ label ~ .content {
+   z-index: 1;
+   opacity: 1;
+ }
+
+input:focus { 
+   border: 2px;
+   background-color: #f5f5f5;
+}

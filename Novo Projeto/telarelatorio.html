@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" type="text/css" href="css/stylerelatorio.css">
+    <link type="text/css" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jsgrid/1.5.3/jsgrid.min.css" />
+    <link type="text/css" rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/jsgrid/1.5.3/jsgrid-theme.min.css" />
+    <title>Relatorios</title>
+</head>
+
+<body>
+
+    <section id="s1">
+        <h1>Relatório de Produtos - 1 </h1>
+
+        <div id="jsGrid"></div>
+    </section>
+    <section id="s2">
+        <h1>Relatório de Produtos - 2 </h1>
+
+        <div id="jsGrid2"></div>
+    </section>
+
+    <footer>
+        <p>&copy;Anna Carneiro</p>
+    </footer>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jsgrid/1.5.3/jsgrid.min.js"></script>
+</body>
+
+<script>
+
+    /* Relatório - 1 */
+    $(function () {
+
+        var produtos = [
+            { "ID": "01", "SKU": "A01", "Nome": "Calça", "Categoria": "Vestuário", "Preço": "R$ 80,00", "Visibilidade": "<span>&#10004;</span>" },
+            { "ID": "02", "SKU": "A02", "Nome": "Camiseta", "Categoria": "Vestuário", "Preço": "R$ 50,00", "Visibilidade": "<span>&#10004;</span>" },
+            { "ID": "03", "SKU": "B01", "Nome": "Cinto", "Categoria": "Acessório", "Preço": "R$ 70,00", "Visibilidade": "<span>&#10004;</span>" },
+            { "ID": "04", "SKU": "A03", "Nome": "Jaqueta", "Categoria": "Vestuário", "Preço": "R$ 400,00", "Visibilidade": "<span>&#10006;</span>" },
+            { "ID": "05", "SKU": "B02", "Nome": "Óculos", "Categoria": "Acessório", "Preço": "R$ 800,00", "Visibilidade": "<span>&#10004;</span>" },
+            { "ID": "06", "SKU": "C01", "Nome": "Sapato", "Categoria": "Calçado", "Preço": "R$ 200,00", "Visibilidade": "<span>&#10006;</span>" },
+            { "ID": "07", "SKU": "A04", "Nome": "Camisa", "Categoria": "Vestuário", "Preço": "R$ 110,00", "Visibilidade": "<span>&#10004;</span>" },
+            { "ID": "08", "SKU": "C02", "Nome": "Tênis", "Categoria": "Calçado", "Preço": "R$ 180,00", "Visibilidade": "<span>&#10004;</span>" }
+        ];
+
+        $("#jsGrid").jsGrid({
+            width: "100%",
+            height: "400px",
+            filtering: true, //Define que permite filtrar
+            editing: true,
+            sorting: true,
+            paging: true,
+            noDataContent: "Sem dados, refazer os filtros",
+            loadMessage: "Por favor aguarde, carregando...",
+            deleteConfirm: "Deseja realmente excluir as informações selecionadas?",
+            data: produtos,
+
+            //Java script responsavel pelo controle e filtragem - Tem que implementar controller
+            controller: {
+
+                /* Exemplo de como filtrar uma coluna
+                loadData: function (filter) {
+                    return $.grep(produtos, function (item) {
+                        return item.ID === filter.ID;
+                    });
+                } */
+
+
+                //Aqui ele filtra todas as colunas de forma generica
+                loadData: function (filter) {
+                    //GREP pesquisa foreach
+                    return $.grep(produtos, function (item) {
+                        //Filtra de forma generica
+                        for (var key in filter) {
+                            var value = filter[key];
+                            if (value.length > 0) {
+                                if (item[key].indexOf(value) == -1)
+                                    //Se nao encontrar valor igual digitado retorna false
+                                    return false;
+                            }
+                        }
+                        //Se encontrar retorna true
+                        return true;
+                    });
+                }
+            },
+
+            fields: [
+                { name: "ID", type: "text", width: 25 },
+                { name: "SKU", type: "text", width: 30 },
+                { name: "Nome", type: "text", width: 60, validate: "required" },
+                { name: "Categoria", type: "text", width: 40 },
+                { name: "Preço", type: "text", width: 40 },
+                { name: "Visibilidade", type: "text", width: 40, editing: false },
+                { type: "control" }
+            ]
+        })
+    })
+
+    /* Relatório - 2 */
+    $(function () {
+
+        var produtos2 = [
+            { "ID": "ex01", "SKU": "ex01", "Nome": "ex01", "Categoria": "ex01", "Preço": "ex01", "Visibilidade": "<span>&#10006;</span>" },
+            { "ID": "ex01", "SKU": "ex01", "Nome": "ex01", "Categoria": "ex01", "Preço": "ex01", "Visibilidade": "<span>&#10004;</span>" },
+            { "ID": "ex01", "SKU": "ex01", "Nome": "ex01", "Categoria": "ex01", "Preço": "ex01", "Visibilidade": "<span>&#10004;</span>" },
+            { "ID": "ex01", "SKU": "ex01", "Nome": "ex01", "Categoria": "ex01", "Preço": "ex01", "Visibilidade": "<span>&#10006;</span>" },
+        ];
+
+        $("#jsGrid2").jsGrid({
+            width: "100%",
+            height: "400px",
+            filtering: true,
+            sorting: true,
+            paging: true,
+            noDataContent: "Sem dados, refazer os filtros",
+            loadMessage: "Por favor aguarde, carregando...",
+            deleteConfirm: "Deseja realmente excluir as informações selecionadas?",
+
+            //Controler que filtrara os dados
+            controller: {
+                loadData: function (filter) {
+                    //lembrar for each produtos2 -> item
+                    return $.grep(produtos2, function (item) {
+                        //Se o filtro nao esta informado ou se estiver informado e for igual.
+                        return filter.ID == '' || item.ID === filter.ID;
+                    });
+                }
+            },
+
+            data: produtos2,
+            //Campos dos atributos
+            fields: [
+                { name: "ID", type: "text", width: 25 },
+                { name: "SKU", type: "text", width: 30 },
+                { name: "Nome", type: "text", width: 60, validate: "required" },
+                { name: "Categoria", type: "text", width: 40 },
+                { name: "Preço", type: "text", width: 40 },
+                { name: "Visibilidade", type: "text", width: 40, editing: false },
+                { type: "control" }
+            ]
+        });
+    })
+</script>
+
+</html>

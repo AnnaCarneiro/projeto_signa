@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<link rel="stylesheet" type="text/css" href="css/stylecadastro.css">
+	<title>Cadastro de Usuário</title>
+</head>
+
+<body>
+
+	<section id="s1">
+		<div class="tabs">
+			<div class="tab">
+				<input type="radio" id="tab4" name="tab-group-2" checked oninput="checktab4()">
+				<label for="tab4" class="titulo">Pessoa Física</label>
+
+				<div class="content">
+					<form id="idDoForm" name="tipo">
+						<span>CPF</span><br><input type="tel" name="cpf" class="obrigatorio" id="cpf"
+							placeholder="___.___.___-__" required>*<br>
+						<div id="mensg_cpf" class="mensg"></div>
+						<span>Nome</span><br><input type="text" class="obrigatorio" id="nome" required>*<br>
+						<div id="mensg_nome" class="mensg"></div>
+						<span>Sobrenome</span><br><input type="text" class="obrigatorio" id="sobrenome" required>*<br>
+						<div id="mensg_sobrenome" class="mensg"></div>
+						<span>E-mail</span><br><input type="email" class="obrigatorio" id="email" required>*<br>
+						<div id="mensg_email" class="mensg"></div>
+						<span>Telefone/Celular</span><br><input type="tel" class="obrigatorio" id="tel"
+							placeholder="(__)_____-____" required> *<br>
+						<div id="mensg_tel" class="mensg"></div>
+						<span> Data de nascimento</span><br><input type="date" class="obrigatorio" id="data"
+							required>*<br>
+						<div id="mensg_data" class="mensg"></div>
+						<span> Nome de Usuário</span><br><input type="text" class="obrigatorio" id="username"
+							required>*<br>
+						<div id="mensg_username" class="mensg"></div>
+						<span>Senha</span><br><input type="password" class="obrigatorio" id="senha" required>*
+						<div id="mensg_senha" class="mensg"></div>
+						<br>
+						<input type="button" value="Salvar" id="salvarpf" class="salvar" onclick="validarCampos()">
+						<div id="mensg" class="mensg"></div>
+					</form>
+				</div>
+
+			</div>
+
+			<div class="tab">
+				<input type="radio" id="tab5" name="tab-group-2" oninput="checktab5()">
+				<label for="tab5" class="titulo">Pessoa Jurídica</label>
+
+				<div class="content">
+					<form id="idDoForm2" class="tipo">
+						<span>CNPJ</span><br><input type="tel" class="obrigatorio" id="cnpj"
+							placeholder="__.___.___/____-__" required>*<br>
+						<div id="mensg_cnpj" class="mensg"></div>
+						<span>Razão Social</span><br><input type="text" class="obrigatorio" id="rsocial" required>*<br>
+						<div id="mensg_rsocial" class="mensg"></div>
+						<span> E-mail</span><br><input type="email" class="obrigatorio" id="email2" required>* <br>
+						<div id="mensg_email2" class="mensg"></div>
+						<span>Telefone/Celular</span><br><input type="tel" class="obrigatorio" id="tel2"
+							placeholder="(__)_____-____" required>*<br>
+						<div id="mensg_tel2" class="mensg"></div>
+						<span>Nome de Usuário</span><br><input type="text" class="obrigatorio" id="username2"
+							required>*<br>
+						<div id="mensg_username2" class="mensg"></div>
+						<span>Senha</span><br><input type="password" class="obrigatorio" id="senha2" required>*
+						<div id="mensg_senha2" class="mensg"></div>
+						<br>
+						<input type="button" value="Salvar" id="salvarpj" class="salvar" onclick="validarCampos2()">
+						<div id="mensg2" class="mensg"></div>
+					</form>
+				</div>
+
+			</div>
+		</div>
+	</section>
+	<footer>
+		<p>&copy;Anna Carneiro</p>
+	</footer>
+	<script src="js/telacadastro.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+	<script src="js/telacadastromask.js"></script>
+	<script src="js/jquery.mask.min.js"></script>
+
+</body>
+
+</html>

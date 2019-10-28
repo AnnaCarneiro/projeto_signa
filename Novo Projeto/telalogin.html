@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+     <meta charset="UTF-8">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+     <link rel="stylesheet" type="text/css" href="css/stylelogin.css">
+     <title>Login</title>
+</head>
+
+<body>
+     <form id="s1">
+          <!--Campo email/username-->
+          <input type="text" id="username" placeholder="Usuário ou E-mail" class="obrigatorio" required>
+          <div id="mensg_username" class="mensg"></div>
+          <!--Campo Senha-->
+          <input type="password" id="senha" placeholder="Senha" class="obrigatorio" required>
+          <div id="mensg_senha" class="mensg"></div>
+          <!--Botão login-->
+          <input type="submit" value="Login" id="login" onclick="validarLogin()">
+          <br>
+          <!--Lugar onde irá aparecer a msg caso não tenha preenchido os dados-->
+          <div id="mensg"></div>
+          <!--Link para tela de cadastro-->
+          <a href="telacadastro.html" id="registro">Registre-se</a>
+          <br>
+          <!--Link para tela de esqueci meus dados-->
+          <a href="telaesqueceusenha.html" id="esqueceu">Esqueci meus dados de login?</a>
+     </form>
+
+     <footer>
+          <p>&copy;Anna Carneiro</p>
+     </footer>
+
+     <script src="js/telalogin.js"></script>
+</body>
+
+</html>
